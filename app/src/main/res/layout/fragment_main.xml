@@ -1,0 +1,17 @@
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+          android:id="@+id/position"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:textColor="@color/basePrimaryBackgroundColour"
+          android:textSize="20sp"
+          android:gravity="center"
+          android:text=" The page Number is 1"/>
+
+
+
+
+
+
+
+
+

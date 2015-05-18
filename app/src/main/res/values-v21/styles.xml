@@ -1,0 +1,8 @@
+<resources>
+
+    <!-- Overriding default theme in Android Lollipop to base custom Theme -->
+    <style name="Theme.Custom" parent="Theme.Base">
+        <item name="android:navigationBarColor">?colorPrimaryDark</item>
+    </style>
+
+</resources>

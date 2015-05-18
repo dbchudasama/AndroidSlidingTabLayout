@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="basePrimaryBackgroundColour">@color/md_orange_500</color> <!--Main Toolbar colour-->
+    <color name="baseSecondaryBackgroundColour">@color/md_orange_700</color> <!--Status bar above toolbar-->
+    <color name="baseBackgroundColour">@color/md_white_1000</color> <!--General forms and general background colour-->
+    <color name="basePrimaryTextColour">@color/md_white_1000</color> <!--Major colour for main Text (Header, Titles etc)-->
+    <color name="baseSecondaryTextColour">@color/md_white_1000</color> <!--Secondary colour for the Text (Options, Settings etc)-->
+
+</resources>

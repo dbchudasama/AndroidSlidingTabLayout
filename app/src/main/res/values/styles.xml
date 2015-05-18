@@ -1,0 +1,37 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar"> <!--No Action Bar as the main theme is being replaced by custom Theme-->
+    </style>
+    <!-- Customize your theme here. -->
+
+    <!--Creating a Base-->
+    <style name="Theme.Base" parent="AppTheme">
+        <!--Similar to Inheritance, inheriting from AppTheme and extending ie. overriding defaults for custom-->
+        <!--Mapping actual android colour properties to our custom colours-->
+        <item name="colorPrimary">@color/basePrimaryBackgroundColour</item> <!--Background colour-->
+        <item name="colorPrimaryDark">@color/baseSecondaryBackgroundColour</item>
+        <item name="windowActionBar">false</item> <!--Not using an Action Bar-->
+        <item name="android:windowNoTitle">true</item> <!--Don't want to show a title-->
+        <item name="android:windowBackground">@color/baseBackgroundColour</item> <!--Default Background Coloer-->
+    </style>
+
+    <!--Basic Theme. Theme.Custom inherits from theme.base which inherits from AppTheme -->
+    <style name="Theme.Custom" parent="Theme.Base"/>
+
+    <!-- The theme that will override the default action bar -->
+    <style name="ActionBarThemeOverlay" parent="">
+        <item name="android:textColorPrimary">@color/basePrimaryTextColour</item>
+        <item name="colorControlHighlight">@color/baseBackgroundColour</item>
+        <item name="android:actionMenuTextColor">@color/basePrimaryTextColour</item>
+        <item name="android:textColorSecondary">@color/baseSecondaryTextColour</item>
+        <item name="android:background">@color/basePrimaryBackgroundColour</item>
+    </style>
+
+    <!--Action Bar Title Text -->
+    <style name="ActionBar.TitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/basePrimaryTextColour</item>
+        <item name="android:textSize">18sp</item> <!-- Standard Pixels -->
+    </style>
+
+</resources>
