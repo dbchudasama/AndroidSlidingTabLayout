@@ -1,11 +1,15 @@
 package com.divyeshbc.testslidingscrollbar;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ImageSpan;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,12 +37,18 @@ public class MainActivity extends BaseActivity {
         //Setting the Adapter on the view pager first. Passing the fragment manager through as an argument
         mPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
         mTabs = (SlidingTabLayout) findViewById(R.id.tabs);
-        //Setting the ViewPager as the tabs
-        mTabs.setViewPager(mPager);
+
+        //Setting the custom Tab View as the Sliding Tabs Layout
+        mTabs.setCustomTabView(R.layout.custom_tab_view, R.id.tabText);
 
         mTabs.setDistributeEvenly(true);
 
+        //mTabs.setSelectedIndicatorColors(getResources().getColor(R.color.tabIndicatorColour));
+
         mTabs.setBackgroundColor(getResources().getColor(R.color.basePrimaryBackgroundColour));
+
+        //Setting the ViewPager as the tabs
+        mTabs.setViewPager(mPager);
 
     }
 
@@ -67,13 +77,16 @@ public class MainActivity extends BaseActivity {
 
     class MyPagerAdapter extends FragmentPagerAdapter {
 
+        //Setting up integer array of icons
+        int icons[] = {R.drawable.about_us, R.drawable.campus, R.drawable.events, R.drawable.learning, R.drawable.sewa};
 
-        String[] tabs;
+        //Defined from strings.xml
+        String[] tabText = getResources().getStringArray(R.array.tabs);
 
         public MyPagerAdapter(FragmentManager fm) {
             super(fm);
             //Initialising the strings array of tabs
-            tabs = getResources().getStringArray(R.array.tabs);
+            tabText = getResources().getStringArray(R.array.tabs);
         }
 
         @Override
@@ -88,8 +101,26 @@ public class MainActivity extends BaseActivity {
 
         @Override
         public CharSequence getPageTitle(int position){
-            //Return the text of the position clicked and display this as the title for the tab
-            return tabs[position];
+
+            //Constructing drawable object from the icon position
+            Drawable drawable = getResources().getDrawable(icons[position]);
+
+            //Defining the bounds for each icon as this is not automatically calculated
+            drawable.setBounds(0,0,90,90);
+
+            //Passing icons as drawable objects into the imageSpan. This means it can be placed amongst the text
+            ImageSpan imageSpan = new ImageSpan(drawable);
+
+            //Spannable strings allows us to embed images with text (attach/detach images)
+            SpannableString spannableString = new SpannableString(" ");
+
+            //Here setting the span of the icons amongst the scroll bar. Using the array of icons, starting at position 0,
+            //till the end, SPAN_EXCLUSIVE_EXCLUSIVE will ensure only the images in the range are included, nothing more,
+            //nothing less
+            spannableString.setSpan(imageSpan,0,spannableString.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+            //Return the spannable string with icons embedded
+            return spannableString;
         }
 
         @Override

@@ -5,5 +5,7 @@
     <color name="baseBackgroundColour">@color/md_white_1000</color> <!--General forms and general background colour-->
     <color name="basePrimaryTextColour">@color/md_white_1000</color> <!--Major colour for main Text (Header, Titles etc)-->
     <color name="baseSecondaryTextColour">@color/md_white_1000</color> <!--Secondary colour for the Text (Options, Settings etc)-->
+    <color name="tabIndicatorColour">@color/md_blue_500</color>
+    <color name="colourHighlight">@color/md_blue_grey_400</color>
 
 </resources>
